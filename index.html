@@ -36,7 +36,7 @@
 		cursor:inherit;
 	}
 
-	fieldset.ios13-segmented-control {
+	.ios13-segmented-control {
 		--background: rgba(239,239,240,1);
 		background: var(--background);
 		border-radius: 9px;
@@ -53,20 +53,20 @@
 		user-select: none;
 	}
 
-	fieldset.ios13-segmented-control .option {
+	.ios13-segmented-control .option {
 		position: relative;
 		cursor: pointer;
 	}
 
-	fieldset.ios13-segmented-control .option:hover input:not(:checked) + label span, fieldset.ios13-segmented-control .option:active input:not(:checked) + label span, fieldset.ios13-segmented-control .option:focus input:not(:checked) + label span {
+	.ios13-segmented-control .option:hover input:not(:checked) + label span, .ios13-segmented-control .option:active input:not(:checked) + label span, .ios13-segmented-control .option:focus input:not(:checked) + label span {
 		opacity: .2;
 	}
 
-	fieldset.ios13-segmented-control .option:active input:not(:checked) + label span {
+	.ios13-segmented-control .option:active input:not(:checked) + label span {
 		transform: scale(.95);
 	}
 
-	fieldset.ios13-segmented-control .option label {
+	.ios13-segmented-control .option label {
 		position: relative;
 		display: block;
 		text-align: center;
@@ -77,7 +77,7 @@
 		font-size: 14px;
 	}
 
-	fieldset.ios13-segmented-control .option label::before, fieldset.ios13-segmented-control .option label::after {
+	.ios13-segmented-control .option label::before, .ios13-segmented-control .option label::after {
 		content: '';
 		width: 1px;
 		background: rgba(142,142,147,.15);
@@ -90,31 +90,31 @@
 		transition: background .2s ease;
 	}
 
-	fieldset.ios13-segmented-control .option label::before {
+	.ios13-segmented-control .option label::before {
 		left: 0;
 		transform: translateX(-.5px);
 	}
 
-	fieldset.ios13-segmented-control .option label::after {
+	.ios13-segmented-control .option label::after {
 		right: 0;
 		transform: translateX(.5px);
 	}
 
-	fieldset.ios13-segmented-control .option:first-of-type {
+	.ios13-segmented-control .option:first-of-type {
 		grid-column: 1;
 		grid-row: 1;
 		box-shadow: none;
 	}
 
-	fieldset.ios13-segmented-control .option:first-of-type label::before {
+	.ios13-segmented-control .option:first-of-type label::before {
 		opacity: 0;
 	}
 
-	fieldset.ios13-segmented-control .option:last-of-type label::after {
+	.ios13-segmented-control .option:last-of-type label::after {
 		opacity: 0;
 	}
 
-	fieldset.ios13-segmented-control .option input {
+	.ios13-segmented-control .option input {
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -132,7 +132,7 @@
 		opacity: 0;
 	}
 
-	fieldset.ios13-segmented-control .selection {
+	.ios13-segmented-control .selection {
 		background: rgba(255,255,255,1);
 		border: .5px solid rgba(0,0,0,0.04);
 		box-shadow: 0 3px 8px 0 rgba(0,0,0,0.12), 0 3px 1px 0 rgba(0,0,0,0.04);
@@ -145,7 +145,7 @@
 		transition: transform .2s ease;
 	}
 
-	fieldset.ios13-segmented-control .option label span {
+	.ios13-segmented-control .option label span {
 		display: block;
 		position: relative;
 		z-index: 2;
@@ -154,12 +154,12 @@
 		will-change: transform;
 	}
 
-	fieldset.ios13-segmented-control .option input:checked+label::before, fieldset.ios13-segmented-control .option input:checked+label::after {
+	.ios13-segmented-control .option input:checked+label::before, .ios13-segmented-control .option input:checked+label::after {
 		background: var(--background);
 		z-index: 1;
 	}
 
-	fieldset.ios13-segmented-control .option input:checked+label {
+	.ios13-segmented-control .option input:checked+label {
 		cursor: default;
 	}
 
@@ -170,9 +170,9 @@
 
 $(document).ready(function() {
 
-	$("fieldset.ios13-segmented-control").on("change", function() {
-		$("fieldset.ios13-segmented-control .option input").each(function(i) {
-			if ($(this).is(":checked")) $("fieldset.ios13-segmented-control .selection").css("transform","translateX(" + ($(this).outerWidth() * i) + "px)");
+	$(".ios13-segmented-control").on("change", function() {
+		$(".ios13-segmented-control .option input").each(function(i) {
+			if ($(this).is(":checked")) $(".ios13-segmented-control .selection").css("transform","translateX(" + ($(this).outerWidth() * i) + "px)");
 		});
 	});
 
@@ -184,7 +184,7 @@ $(document).ready(function() {
 <body ontouchstart="">
 
 	<main>
-		<fieldset class="ios13-segmented-control">
+		<div class="ios13-segmented-control">
 			<span class="selection"></span>
 
 			<div class="option">
@@ -202,7 +202,7 @@ $(document).ready(function() {
 				<label for="spotify"><span>Tren</span></label>
 			</div>
 
-		</fieldset>
+		</div>
 	</main>
 
 </body>
