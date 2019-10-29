@@ -165,18 +165,42 @@
 
 </style>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
+  // Constants
 
-$(document).ready(function() {
+  const SEGMENTED_CONTROL_BASE_SELECTOR = ".ios13-segmented-control";
+  const SEGMENTED_CONTROL_INDIVIDUAL_SEGMENT_SELECTOR = ".ios13-segmented-control .option input";
+  const SEGMENTED_CONTROL_BACKGROUND_PILL_SELECTOR = ".ios13-segmented-control .selection";
 
-	$(".ios13-segmented-control").on("change", function() {
-		$(".ios13-segmented-control .option input").each(function(i) {
-			if ($(this).is(":checked")) $(".ios13-segmented-control .selection").css("transform","translateX(" + ($(this).outerWidth() * i) + "px)");
-		});
-	});
 
-});
+  // Main
+
+  document.addEventListener("DOMContentLoaded", setup);
+
+  // Body functions
+
+  function setup() {
+    forEachElement(SEGMENTED_CONTROL_BASE_SELECTOR, elem => {    
+      elem.addEventListener("change", updatePillPosition);
+    })
+    window.addEventListener("resize", updatePillPosition); // Prevent pill from detaching from element when window resized. Becuase this is rare I haven't bothered with throttling the event 
+  }
+
+  function updatePillPosition() {    
+    forEachElement(SEGMENTED_CONTROL_INDIVIDUAL_SEGMENT_SELECTOR, (elem, index) => {
+      if (elem.checked) moveBackgroundPillToElement(elem, index);
+    })
+  }
+
+  function moveBackgroundPillToElement(elem, index) {
+    document.querySelector(SEGMENTED_CONTROL_BACKGROUND_PILL_SELECTOR).style.transform = "translateX(" + (elem.offsetWidth * index) + "px)";
+  }
+
+  // Helper functions
+
+  function forEachElement(className, fn) {
+    Array.from(document.querySelectorAll(className)).forEach(fn);
+  }
 
 </script>
 
