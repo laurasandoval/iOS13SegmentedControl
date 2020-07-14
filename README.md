@@ -1,6 +1,6 @@
 # iOS13SegmentedControl
 
-iOS 13 Segmented Control using CSS, HTML and a few lines of Javascript.
+Simple, accessible, almost-JS-free iOS 13 Segmented Control using CSS, HTML and a few lines of vanilla Javascript.
 
 ### 🌎 [Demo](https://laurasandoval.github.io/iOS13SegmentedControl/)
 
